@@ -1,0 +1,207 @@
+/* Définition des variables de couleur pour les thèmes */
+:root {
+  /* Mode Clair par défaut */
+  --bg-primary: #f8fafc; /* Gris très clair, doux */
+  --bg-card: #ffffff;
+  --text-primary: #1e293b; /* Gris foncé */
+  --text-secondary: #64748b;
+  --color-accent: #4f46e5; /* Indigo vibrant pour l'action */
+  --color-success: #10b981; /* Vert pour le solde/succès */
+  --color-error: #ef4444; /* Rouge pour le retrait/erreur */
+  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --border-color: #e2e8f0;
+}
+
+/* Mode Sombre (Activé par la classe 'dark-mode' sur le body) */
+body.dark-mode {
+  --bg-primary: #1e293b; /* Arrière-plan sombre et confortable */
+  --bg-card: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --color-accent: #a5b4fc; 
+  --color-success: #34d399;
+  --color-error: #f87171;
+  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  --border-color: #475569;
+}
+
+/* Styles globaux */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  /* Correction pour garantir la continuité du thème */
+  background-color: var(--bg-primary); 
+  color: var(--text-primary);
+}
+
+/* Correction pour garantir que tous les titres suivent le thème */
+h1, h2, h3 {
+  color: var(--text-primary);
+  transition: color 0.5s;
+}
+
+/* --- Composants UI --- */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+.header h1 {
+  color: var(--color-accent);
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.theme-toggle-btn {
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 25px;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: var(--shadow-card);
+}
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+}
+
+.status-box {
+  background-color: var(--bg-card);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 30px;
+  border-left: 5px solid var(--color-accent);
+}
+.status-box .mono {
+  font-family: monospace;
+  color: var(--color-accent);
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.action-card {
+  background-color: var(--bg-card); /* Utilise la variable de fond de carte */
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s;
+}
+.action-card:hover {
+  transform: translateY(-5px);
+}
+.action-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--text-primary); /* S'assure que le titre de la carte suit le thème */
+}
+
+.action-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-primary); /* Utilise la variable de fond primaire pour l'input */
+  color: var(--text-primary);
+  transition: border-color 0.3s;
+}
+.action-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.action-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+.action-btn.primary {
+  background-color: var(--color-accent);
+  color: white;
+}
+.action-btn.primary:hover:not(:disabled) {
+  background-color: #3730a3;
+}
+.action-btn.danger {
+  background-color: var(--color-error);
+  color: white;
+}
+.action-btn.danger:hover:not(:disabled) {
+  background-color: #c026d3;
+}
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Affichage du Solde */
+.balance-display {
+  grid-column: span 2;
+  border-left: 8px solid var(--color-success);
+}
+.balance-value {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--color-success);
+}
+.balance-unit {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+.balance-refresh-btn {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: left;
+  transition: color 0.3s;
+}
+
+/* Messages de statut */
+.message-box {
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.message-box.info {
+  background-color: #bfdbfe; color: #1e40af; 
+}
+.message-box.success {
+  background-color: #d1fae5; color: #065f46; 
+}
+.message-box.error {
+  background-color: #fee2e2; color: #991b1b; 
+}
+body.dark-mode .message-box.info { background-color: #1e3a8a; color: #93c5fd; }
+body.dark-mode .message-box.success { background-color: #064e3b; color: #a7f3d0; }
+body.dark-mode .message-box.error { background-color: #7f1d1d; color: #fecaca; }
