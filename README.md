@@ -1,13 +1,10 @@
-# Sample Hardhat Project
+Application Full-Stack Web3 simulant une banque simple, développée sur une infrastructure Blockchain.
+Format : Projet académique (Développement Web3).
+Tâches Clés :
+.Conception et implémentation d'un Smart Contract pour la gestion des transactions (dépôt, retrait).
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+.Développement de l'interface utilisateur en React.js.
 
-Try running some of the following tasks:
+.Interaction avec le Smart Contract en utilisant la librairie Ethers.js.
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+.Gestion du cycle de vie complet du développement sur l'environnement Hardhat.
