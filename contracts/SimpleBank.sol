@@ -1,4 +1,3 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 contract SimpleBank {
@@ -23,7 +22,6 @@ contract SimpleBank {
     function withdraw(uint256 amount) public {
         require(balances[msg.sender] >= amount, "Solde insuffisant");
         balances[msg.sender] -= amount;
-        // La fonction `transfer` est sécurisée et envoie les fonds au `msg.sender`
         payable(msg.sender).transfer(amount);
         emit Withdrawal(msg.sender, amount);
     }
